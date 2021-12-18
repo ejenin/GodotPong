@@ -53,15 +53,6 @@ public class Ball : KinematicBody2D
 		{
 			BounceX();
 		}
-		
-		// // <remove>
-		// var approachedHalfScreen = (Position.x - _size.x / 2) < (_viewportSize.x / 2 + 50);
-		//
-		// if (approachedHalfScreen && _velocity.x < 0f)
-		// {
-		// 	BounceX();
-		// }
-		// // </remove>
 	}
 
 	public double Height => _size.y;
