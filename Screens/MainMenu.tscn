@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://AutoPilotBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Screens/MainMenu.cs" type="Script" id=3]
+[ext_resource path="res://Screens/PressAnyKey.cs" type="Script" id=4]
+[ext_resource path="res://art/a_button.png" type="Texture" id=5]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(0, 5);
+
+void fragment() {
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/blur_amount = 0.072
+
+[sub_resource type="DynamicFont" id=2]
+size = 128
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 3 )
+
+[node name="BackgroundLayer" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AutoPilotBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="BlurLayer" type="ColorRect" parent="."]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="BlurLayer"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -140.0
+margin_top = 220.0
+margin_right = 140.0
+margin_bottom = 350.0
+custom_fonts/font = SubResource( 2 )
+text = "Pong"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressAnyKey" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_right = 228.0
+margin_bottom = 66.5
+custom_fonts/font = SubResource( 1 )
+text = "Press ENTER OR
+to play"
+align = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/PressAnyKey"]
+position = Vector2( 486.5, 35 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="CanvasLayer/PressAnyKey"]
+repeat = true
+playback/repeat = true
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_Timer_timeout"]

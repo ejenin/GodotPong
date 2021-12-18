@@ -1,0 +1,8 @@
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\bin\Debug\Pong.dll
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\bin\Debug\Pong.pdb
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\obj\Debug\Pong.csprojAssemblyReference.cache
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\obj\Debug\Pong.AssemblyInfoInputs.cache
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\obj\Debug\Pong.AssemblyInfo.cs
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\obj\Debug\Pong.csproj.CoreCompileInputs.cache
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\obj\Debug\Pong.dll
+C:\Users\Eugene\Documents\Godot\pong\.mono\temp\obj\Debug\Pong.pdb
